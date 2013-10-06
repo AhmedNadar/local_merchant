@@ -1,12 +1,12 @@
 class ProductsController < ApplicationController
 
-	before_action :set_product, only: [:show, :update, :edit, :destroy]
+	before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
   	@products = Product.all
   	respond_to do |format|
   		format.html
-  		format.json {render json: @product}
+  		format.json {render json: @products}
   	end
   end
 
