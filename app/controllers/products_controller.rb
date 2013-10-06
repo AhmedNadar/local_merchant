@@ -1,13 +1,12 @@
 class ProductsController < ApplicationController
 
-	before_action :set_product, only:[:show, :new, :edit, :destroy]
+	before_action :set_product, only:[:show, :update, :edit, :destroy]
 
   def index
   	@products = Product.all
   end
 
   def show
-  	@product = Product.find(product_params)
   end
 
   def new
@@ -15,11 +14,10 @@ class ProductsController < ApplicationController
   end
 
   def edit
-  	@product = Product.find(product_params)
   end
 
   def create
-  	@product = Product.find(product_params)
+  	@product = Product.new(product_params)
 	  	if@product.save
 	  		redirect_to @product, notice: 'Product weas successfully created.'
 	  	else
@@ -28,7 +26,6 @@ class ProductsController < ApplicationController
   end
 
   def update
-  	@product = Product.find(product_params)
   		if @product.update(product_params)
   			redirect_to @product, notice: 'product was successfully uopdated.'
   		else
@@ -37,7 +34,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-  	# @product = Product.find(product_params)
   	@product.destroy
   	redirect_to products_url
   end
