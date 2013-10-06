@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
 
   def index
   	@products = Product.all
+  	respond_to do |format|
+  		format.html
+  		format.json {render json: @product}
+  	end
   end
 
   def show
@@ -18,24 +22,35 @@ class ProductsController < ApplicationController
 
   def create
   	@product = Product.new(product_params)
+  	respond_to do |format|
 	  	if@product.save
-	  		redirect_to @product, notice: 'Product weas successfully created.'
+	  		format.html { redirect_to @product, notice: 'Product weas successfully created.' }
+	  		format.json { render action: 'show', status: :created, location: @product }
 	  	else
-	  		render :new
+	  		format.html { render action: 'new' }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
 	  	end
+  	end
   end
 
   def update
+  	respond_to do |format|
   		if @product.update(product_params)
-  			redirect_to @product, notice: 'product was successfully uopdated.'
+  			format.html { redirect_to @product, notice: 'product was successfully updated.' }
+  			format.json { head :no_content }
   		else
-  			render :edit
-  		end
+  			format.htmlv{ render action: 'edit' }
+  			format.json { render json: @product.errors, status: :unprocessable_entity}
+   		end
+  	end
   end
 
   def destroy
   	@product.destroy
-  	redirect_to products_url
+	  respond_to do |format|
+	 		format.html { redirect_to products_url }
+    	format.json { head :no_content }
+		end
   end
 
   private
