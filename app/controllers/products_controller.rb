@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
   			format.html { redirect_to @product, notice: 'product was successfully updated.' }
   			format.json { head :no_content }
   		else
-  			format.htmlv{ render action: 'edit' }
+  			format.html { render action: 'edit' }
   			format.json { render json: @product.errors, status: :unprocessable_entity}
    		end
   	end
