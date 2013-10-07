@@ -14,7 +14,7 @@
 					<td><%= image_tag "products/#{pro.image_url}" %></td>
 					<td><%= pro.title %></td>
 					<td><%= pro.description %></td>
-					<td><%= pro.price %></td>
+					<td><strong><%= print_price(pro.price) %></strong></td>
 					<td>
 						<%= link_to "Show", product_path(pro) %>
 						<%= link_to "Delete", product_path(pro), data: {confirm: "Are you sure you want to delete this product, there are no undo?"}, :method => :delete %>
