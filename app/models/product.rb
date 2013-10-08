@@ -6,8 +6,10 @@ class Product < ActiveRecord::Base
 		super
 	end
 
-	#validations
+	#validations order is ipmortant for view 
+  validates_uniqueness_of :title
 	validates_presence_of :title, :description, :image_url, :price, :stock
-	validates_numericality_of :price
+	validates_numericality_of :price, :greater_than_or_equal_to => 0.01
 	validates_numericality_of :stock, :greater_than_or_equal_to => 0
+  validates_format_of :image_url, :with => %r{\.(gif|jpg|png)z}i
 end
