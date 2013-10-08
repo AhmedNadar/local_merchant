@@ -37,6 +37,7 @@ en:
             title: 
               blank:  "is required, you have to fill it out."
               taken: "is been taken, type another title."
+              too_short:  "should be 13 characters only."
             description:
               blank:  "is must, you can't list item without it."
             image_url:
