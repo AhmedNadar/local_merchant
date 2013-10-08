@@ -1,5 +1,6 @@
 Merchant::Application.routes.draw do
   
+  get "cart/index"
   get "store/index"
   resources :products
   
