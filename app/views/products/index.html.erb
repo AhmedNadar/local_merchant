@@ -14,7 +14,7 @@
 				<tr>
 					<td><%= image_tag "products/#{pro.image_url}" %></td>
 					<td><%= pro.title %></td>
-					<td><%= pro.description %></td>
+					<td><%= truncate(strip_tags(pro.description), :length => 80 )%></td>
 					<td><strong><%= print_price(pro.price) %></strong></td>
 					<td><strong><%= display_stock(pro.stock) %></strong></td>
 					<td>
