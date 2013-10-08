@@ -36,11 +36,12 @@ en:
           attributes:
             title: 
               blank:  "is required, you have to fill it out."
+              taken: "is been taken, type another title."
             description:
               blank:  "is must, you can't list item without it."
             image_url:
-              blank:  "needs a URL."
+              blank:  "needs a URL, can not be empty."
+              invalid:  "should be type of GIF, JPG or PNG only."
             price:
               blank:  "can not be empty."
-              not_a_number: must be a number"
-
+              not_a_number: must be a number."
