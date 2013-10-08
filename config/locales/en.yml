@@ -19,5 +19,28 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+# hello: "Hello world"
+
+# custom errors => http://guides.rubyonrails.org/i18n.html#translations-for-active-record-models
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      product:
+        title: "Product title"
+        description: "Description"
+        image_url: "Image"
+        price:  "Price"
+    errors:
+      models:
+        product:
+          attributes:
+            title: 
+              blank:  "is required, you have to fill it out."
+            description:
+              blank:  "is must, you can't list item without it."
+            image_url:
+              blank:  "needs a URL."
+            price:
+              blank:  "can not be empty."
+              not_a_number: must be a number"
+
