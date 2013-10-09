@@ -10,5 +10,6 @@
     <h3><%= pro.title %></h3> 
     <p><%= pro.description %></p>
     <span><strong><%= print_price(pro.price) %></strong></span>
+    <span><%= button_to 'Add to Cart', line_items_path(:product_id => pro) %></span> 
   </div>
 <% end %>

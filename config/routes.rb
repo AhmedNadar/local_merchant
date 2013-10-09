@@ -3,6 +3,8 @@ Merchant::Application.routes.draw do
   get "cart/index"
   get "store/index"
   resources :products
+  resources :line_items
+  resources :carts
   
   root 'store#index', :as => "store"
 
