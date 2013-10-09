@@ -18,13 +18,12 @@ class LineItemsController < ApplicationController
 
   def create
     @cart = current_cart
-    product = Product.find(item_params)
-    @line_item = @cart.line_items.build(:product => product)
+    @line_item = @cart.line_items.build params[:product]
 
     if @line_item.save
-      redirect_to(@line_item.cart,:notice => 'Item saved successfully.') 
+      redirect_to(@line_item.cart, :notice => 'Item saved successfully.') 
     else
-       render 'new'  
+       render :new
     end
   end
 
@@ -32,7 +31,7 @@ class LineItemsController < ApplicationController
     if @line_item.upadte_attributes(params[:line_item])
       redirect_to @line_item, notice: "Item was updated"
     else
-      render "edit"
+      render :edit
     end
   end
 
@@ -46,8 +45,8 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.find(params[:id])
   end
 
-  def item_params
-    params.require(:line_item).permit(:product_id, :cart_id)
-  end
+  # def item_params
+  #   params.require(:line_item).permit(:product_id, :cart_id)
+  # end
 
 end
