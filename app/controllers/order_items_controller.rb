@@ -1,6 +1,7 @@
 class OrderItemsController < ApplicationController
   
   before_action :set_item, only: [:show, :new, :update, :destroy]
+  before_action :load_order, only: [:create]
 
   def index
     @order_items = OrderItem.all
@@ -17,9 +18,7 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-  
-    @order_item = @order.Order_items.build params[:product]
-
+    @order_item = @order.order_items.build params[:product_id]
     if @order_item.save
       redirect_to @order_item.order, notice: 'Item saved successfully.'
     else
@@ -41,12 +40,21 @@ class OrderItemsController < ApplicationController
   end
 
   private
+  # before we add new item
+  def load_order
+    begin
+      @order = Order.find(session[:order_id])               
+    rescue ActiveRecord::RecordNotFound
+      @order = Order.creat(status: "not submitted yet!")
+      session[:order_id] = @order_id
+    end
+  end
+
   def set_item
-    @order_item = orderItem.find(params[:id])
+    @order_item = OrderItem.find(params[:id])
   end
 
   def order_item_params
     params.require(:order_item).permit(:product_id, :order_id, :quantity)
   end
-
 end
