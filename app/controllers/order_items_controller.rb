@@ -22,7 +22,8 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.new(product_id: params[:product_id], order_id: @order.id)
 
     if @order_item.save
-      redirect_to @order_item.order, notice: 'Item saved successfully.'
+      #redirect_to @order_item, notice: 'Item saved successfully.' }
+      redirect_to @order, notice: 'Yeaay, successfully added product to cart.' 
     else
        render :new
     end
