@@ -1,0 +1,7 @@
+<h1>Local Makers Shopping Cart</h1>
+
+<ul>
+  <% for item in @order.order_items %>
+  <li><%= item.product.title %></li>
+  <% end %>
+</ul>

@@ -8,12 +8,13 @@ class Product < ActiveRecord::Base
   
   # order by title
   default_scope :order => 'title'
-  has_many :line_items
   
-  # ensure that there are no line items referencing this product before deletng product
-  before_destroy :ensure_not_accossiated_to_any_line_item    
-  def ensure_not_accossiated_to_any_line_item
-    if line_items.empty?
+  has_many :order_items
+  
+  # ensure that there are no order items referencing this product before deletng product
+  before_destroy :ensure_not_accossiated_to_any_order_item    
+  def ensure_not_accossiated_to_any_order_item
+    if order_items.empty?
       return true
     else
       errors.add :base, "You can not delete that becasue its assocciated to an item(s)."

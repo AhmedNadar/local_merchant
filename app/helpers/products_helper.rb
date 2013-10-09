@@ -1,9 +1,11 @@
 module ProductsHelper
 	
+	# price helper method
 	def print_price(price)
 		number_to_currency price
 	end
 
+	# stock helper
 	def display_stock(stock)
 		if stock > 0
 			content_tag :span, "In Stock " + stock.to_s
