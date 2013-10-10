@@ -6,14 +6,13 @@ module ProductsHelper
 	end
 
 	# stock helper
-	def display_stock(stock)
-		if stock > 0
-
-			content_tag :span, "In Stock " + stock.to_s
-			# <span>In Stock (##)</span>
-		else
+	def display_stock(stock, requested = 1)
+		if stock == 0
 			content_tag :span, "Out of Stock"
-			# <span>Out of Stock</span>
+		elsif requested < stock
+			"there is enough stock to fulfll the order "
+		else
+		 content_tag(:span, "Insufficient stock (#{stock})", class: "low_stock")
 		end
 	end
 end
