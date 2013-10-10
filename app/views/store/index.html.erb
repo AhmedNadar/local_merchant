@@ -3,13 +3,16 @@
 <% end %>
 
 <h1>Local Makers Catalog</h1>
+<p> <%= link_to "Create a New Product", new_product_path %> </p>
 
 <% @products.each do |pro| %>
   <div>
-    <p><%= image_tag "products/#{pro.image_url}" %></p> 
-    <h3><%= pro.title %></h3> 
+    <p><%= image_tag "products/#{pro.image_url}" %>
+    <h3><%= pro.title %></h3>    
     <p><%= pro.description %></p>
-    <span><strong><%= print_price(pro.price) %></strong></span>
+    <span><strong><%= print_price(pro.price) %></strong></span><br>
+    <td><strong><%= display_stock(pro.stock) %></strong></td><br>
     <span><%= button_to "Add to Cart", order_items_path(product_id: pro.id) %></span> 
   </div>
 <% end %>
+
