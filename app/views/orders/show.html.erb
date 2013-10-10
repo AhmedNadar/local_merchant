@@ -33,7 +33,7 @@
       <td><%= print_price item.product.price %></td>
       <td><%= print_price item.subtotal %></td>
       <td><%= display_stock(item.product.stock, item.quantity) %></td>
-      <td><%= link_to "Delete", item, data: {confirm: "Are you sure?"}, mehtod: :delete  %></td>
+      <td><%= link_to "Delete", item, data: {confirm: "Are you sure?"}, method: :delete  %></td>
     </tr>
     <tr>
       <td><%= print_price @order.total %>  </td>

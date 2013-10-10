@@ -42,9 +42,9 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
+    puts "im in delete method for order items"
     @order_item.destroy
-    # redirect_to order_item_url
-    redirect_to order_path
+    redirect_to @order_item.order
   end
 
   private
