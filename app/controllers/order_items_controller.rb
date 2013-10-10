@@ -1,6 +1,6 @@
 class OrderItemsController < ApplicationController
   
-  before_action :set_item, only: [:show, :new, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :load_order, only: [:create]
 
   def index
@@ -34,7 +34,7 @@ class OrderItemsController < ApplicationController
 
   def update
     if @order_item.update(order_item_params)
-      redirect_to @order_item, notice: "Item was updated"
+      redirect_to @order, notice: "Item was updated"
     else
       render :edit
     end
