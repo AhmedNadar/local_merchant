@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
 
+  mount_uploader :image, ImageUploader
  	# override ActiveRecord method to handel removing $ from price at the Getter.
 	def price=(input)
 		input.delete!("$")
