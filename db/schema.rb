@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131009161115) do
+ActiveRecord::Schema.define(version: 20131010142527) do
 
   create_table "order_items", force: true do |t|
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_id"
-    t.integer  "quantity"
+    t.integer  "quantity",   default: 0
   end
 
   create_table "orders", force: true do |t|
