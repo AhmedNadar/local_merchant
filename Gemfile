@@ -12,6 +12,8 @@ gem 'better_errors'
 gem 'bootstrap-sass', '~> 2.2.2.0'
 # REPL and local/instance variable inspection.
 gem 'binding_of_caller'
+gem 'carrierwave'
+gem "rmagick"
 
 group :test, :development do
   gem 'pry'

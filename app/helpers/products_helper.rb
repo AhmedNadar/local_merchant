@@ -8,6 +8,7 @@ module ProductsHelper
 	# stock helper
 	def display_stock(stock)
 		if stock > 0
+
 			content_tag :span, "In Stock " + stock.to_s
 			# <span>In Stock (##)</span>
 		else

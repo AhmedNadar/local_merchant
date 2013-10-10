@@ -1,4 +1,4 @@
-<%= form_for(@product) do |f| %>
+<%= form_for @product, :html => {:multipart => true} do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prevent this product from being saved:</h2>
@@ -30,10 +30,11 @@
     <%= f.text_field :stock %>
   </div>
 
+
   <div class="field">
-  	<%= f.label :image_url %> <br>
-  	<%= f.text_area :image_url %>
+    <%= f.file_field :image %>
   </div>
+
   
   <div class="actions"><%= f.submit %></div>
 
