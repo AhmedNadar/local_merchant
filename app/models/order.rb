@@ -1,7 +1,9 @@
 class Order < ActiveRecord::Base
-  has_many :order_items, :dependent => :destroy
+  
+  has_many :order_items, dependent: :destroy
+
 
   def total
-    order_items.subtotal.sum 
+    # @order_items.map do |i| i.subtotal end.sum
   end
 end
