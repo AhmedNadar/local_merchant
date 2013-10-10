@@ -35,10 +35,10 @@
       <td><%= display_stock(item.product.stock, item.quantity) %></td>
       <td><%= link_to "Delete", item, data: {confirm: "Are you sure?"}, method: :delete  %></td>
     </tr>
-    <tr>
-      <td><%= print_price @order.total %>  </td>
-    </tr>
   <% end %>
+    <tr column="7">
+      <td><strong><%= print_price @order.total %></strong></td>
+    </tr>
 </table>
 
 <p> <%= link_to "Empty Cart", @order, data: { confirm: 'Are you sure?' }, method: :delete %></p>

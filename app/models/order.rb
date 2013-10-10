@@ -4,6 +4,8 @@ class Order < ActiveRecord::Base
 
 
   def total
-    # @order_items.map do |i| i.subtotal end.sum
+    self.order_items.map do |i| 
+      i.subtotal 
+    end.sum
   end
 end
