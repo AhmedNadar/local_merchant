@@ -11,6 +11,7 @@ class Product < ActiveRecord::Base
   default_scope :order => 'title'
   
   has_many :order_items
+  belongs_to :users
   
   # ensure that there are no order items referencing this product before deletng product
   before_destroy :ensure_not_accossiated_to_any_order_item    
