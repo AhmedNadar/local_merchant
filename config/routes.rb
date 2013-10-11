@@ -1,10 +1,21 @@
 Merchant::Application.routes.draw do
   
+  get "sessions/new"
   resources :products
   resources :order_items
   resources :orders
   
   root 'store#index', :as => "store"
+
+
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
+  resources :users
+  resources :sessions
+  get "secret" => "home#secret", :as => "secret"
+  # root :to => "home#index"
+
 
 end
 

@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      # redirect_to @order, notic: "order was created."
       format.html { redirect_to @order, notice: 'Successfully added product to cart.' }
     else
       render :new
