@@ -12,7 +12,9 @@ class Product < ActiveRecord::Base
   
   has_many :order_items
   belongs_to :users
+  belongs_to :category
   
+  CATEGORIES = ["food", "shoes", "clothes"]
   # ensure that there are no order items referencing this product before deletng product
   before_destroy :ensure_not_accossiated_to_any_order_item    
   def ensure_not_accossiated_to_any_order_item

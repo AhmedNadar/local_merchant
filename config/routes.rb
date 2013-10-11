@@ -13,6 +13,11 @@ Merchant::Application.routes.draw do
   resources :users
   resources :sessions
   # root :to => "home#index"
+
+  # for categories
+  get 'browse/shoes' => 'products#shoes'
+  get 'browse/foods' => 'products#foods'
+  get 'browse/clothes' => 'products#clothes'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,11 @@
+<h1>Foods</h1>
+
+<% @products.each do |product| %>
+  <div>
+    <p><%= image_tag product.image_url(:thumb).to_s %></p>
+    <h3><%= product.title %></h3>    
+    <p><%= product.description %></p>
+    <span><strong><%= print_price(product.price) %></strong></span><br>
+    <span><%= button_to "Add to Cart", order_items_path(product_id: product .id) %></span> 
+  </div>
+<% end %>

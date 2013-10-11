@@ -54,6 +54,18 @@ class ProductsController < ApplicationController
 		end
   end
 
+  def shoes
+    @products = Product.where("category_name = ?", "shoes")
+  end
+
+  def foods
+    @products = Product.where("category_name = ?", "foods")
+  end
+
+  def clothes
+    @products = Product.where("category_name = ?", "clothes")
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_product
@@ -63,6 +75,6 @@ class ProductsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   # This tells Rails to allow all four of our Product attributes to be mass-assign-able.
   def product_params
-  	params.require(:product).permit(:title, :description, :price, :image, :stock )
+  	params.require(:product).permit(:title, :description, :price, :image, :stock, :category_name )
   end
 end
