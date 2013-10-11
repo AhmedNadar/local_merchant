@@ -30,6 +30,13 @@
     <%= f.text_field :stock %>
   </div>
 
+ 
+    <div class="field">
+      <%= f.label :category_name, "Category" %><br />
+      <%= f.select :category_name, Product::CATEGORIES ,prompt: 'Select a category' %>
+    </div>
+ 
+
 
   <div class="field">
     <%= f.file_field :image %>
