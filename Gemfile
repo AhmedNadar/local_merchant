@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', "~> 3.0.0"
 gem 'haml'
 gem 'pg'
-gem 'sorcery'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
@@ -14,6 +13,7 @@ gem 'bootstrap-sass', '~> 2.2.2.0'
 gem 'binding_of_caller'
 gem 'carrierwave'
 gem "rmagick"
+gem "sorcery", "~> 0.8.2"
 
 group :test, :development do
   gem 'pry'
