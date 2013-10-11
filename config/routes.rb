@@ -1,7 +1,5 @@
 Merchant::Application.routes.draw do
   
-  get "order/index"
-  get "store/index"
   resources :products
   resources :order_items
   resources :orders
