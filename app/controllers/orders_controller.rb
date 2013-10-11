@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     # redirect_to orders_url
-    redirect_to products_path
+    redirect_to store_path, notice: 'Your cart is empty, you can continue shopping!.'
   end
 
   private

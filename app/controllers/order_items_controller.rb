@@ -34,17 +34,15 @@ class OrderItemsController < ApplicationController
 
   def update
     if @order_item.update(order_item_params)
-      redirect_to @order_item.order, notice: "Item was updated"
-      # should gorts to @order but its not working...
+      redirect_to @order_item.order, notice: "Your item was updated!"
     else
       render :edit
     end
   end
 
   def destroy
-    puts "im in delete method for order items"
     @order_item.destroy
-    redirect_to @order_item.order
+    redirect_to @order_item.order, notice: "Your #{@order_item.product.title} was deleted!"
   end
 
   private
