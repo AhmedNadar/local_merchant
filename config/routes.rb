@@ -13,7 +13,6 @@ Merchant::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   resources :users
   resources :sessions
-  get "secret" => "home#secret", :as => "secret"
   # root :to => "home#index"
 
 

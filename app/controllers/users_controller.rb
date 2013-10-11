@@ -1,17 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-
-  def index
-    
-  end
-
   def new
+    @users = User.find(params[:id])
     @user = User.new
-  end
-
-  def show
-    
   end
 
   def create
@@ -23,24 +14,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    
-  end
-
-  def update
-    
-  end
-
-  def destroy
-    
-  end
-
-  def set_product
-    @product = Product.find(params[:id])
-  end
+  private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :username, :password )
+    params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation)
   end
 
 end
