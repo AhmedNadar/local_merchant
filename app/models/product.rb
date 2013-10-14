@@ -1,13 +1,12 @@
 class Product < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
- 	# override ActiveRecord method to handel removing $ from price at the Getter.
+
 	def price=(input)
 		input.delete!("$")
 		super
 	end
   
-  # order by title
   default_scope :order => 'title'
   
   has_many :order_items
@@ -15,8 +14,8 @@ class Product < ActiveRecord::Base
   belongs_to :category
   
   CATEGORIES = ["food", "shoes", "clothes"]
-  # ensure that there are no order items referencing this product before deletng product
-  before_destroy :ensure_not_accossiated_to_any_order_item    
+  before_destroy :ensure_not_accossiated_to_any_order_item   
+
   def ensure_not_accossiated_to_any_order_item
     if order_items.empty?
       return true

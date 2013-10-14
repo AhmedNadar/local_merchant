@@ -3,6 +3,7 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
 
   validates_numericality_of :quantity, :greater_than => 0
+  validates_presence_of :order_id, :product_id
 
   def subtotal
     product.price.to_s.to_d * quantity.to_s.to_d

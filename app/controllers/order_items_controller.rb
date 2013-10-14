@@ -18,9 +18,9 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-    # @order_item = OrderItem.new(product_id: params[:product_id], order_id: @order.id)
     @order_item = @order.order_items.find_or_initialize_by_product_id(params[:product_id])
     @order_item.quantity +=1
+
     respond_to do |format|
       if @order_item.save
         format.html { redirect_to @order, notice: 'Successfully added product to cart.' }
@@ -33,29 +33,31 @@ class OrderItemsController < ApplicationController
   end
 
   def update
-    if @order_item.update(order_item_params)
-      redirect_to @order_item.order, notice: "Your item was updated!"
-    else
-      render :edit
+    @order_item = OrderItem.find(params[:id])
+    respond_to do |format|
+      if order_item_params[:quantity].to_i == 0
+        @order_item.destroy
+        format.html { redirect_to @order_item.order, notice: 'Item was deleted from your cart.' }
+        format.json { head :no_content }
+      elsif @order_item.update(order_item_params)
+        format.html { redirect_to @order_item.order, notice: 'Successfully updated the order item.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @order_item.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @order_item.destroy
-    redirect_to @order_item.order, notice: "Your #{@order_item.product.title} was deleted!"
-  end
-
-  private
-
-  # before we add new item
-  def load_order
-    @order = Order.find_or_initialize_by_id(session[:order_id], status: "Not submitted yet!")
-    if @order.new_record?
-      @order.save!
-      session[:order_id] = @order.id
+    respond_to do |format|
+      format.html { redirect_to @order_item.order, notice: "Your #{@order_item.product.title} was deleted!" }
+      format.json { head :no_content }
     end
   end
 
+  private
   def set_item
     @order_item = OrderItem.find(params[:id])
   end

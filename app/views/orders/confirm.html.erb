@@ -1,13 +1,14 @@
-<h1>Thanks for shopping at Local Makers</h1>
+<h2>Thanks for shopping at Local Makers</h2>
 
-
-      <% @order.order_items.each do |item| %>
-        <tr>
-          <td><%= image_tag item.product.image_url(:thumb).to_s %></td>
-          <td><%= item.product.title %></td>
-          <td><%= link_to item.quantity, edit_order_item_path(item) %></td>
-          <td><%= print_price item.product.price %></td>
-          <td><%= print_price item.subtotal %></td>
-          <td><%= display_stock(item.product.stock, item.quantity) %></td>
-        </tr>
-      <% end %>
+<p>Your order:</p>
+  <% @order.order_items.each do |item| %>
+    <tr>
+      <td><%= image_tag item.product.image_url(:thumb).to_s %></td>
+      <td><%= item.product.title %></td>
+      <td><%= link_to item.quantity, edit_order_item_path(item) %></td>
+      <td><%= print_price item.product.price %></td>
+      <td><%= print_price item.subtotal %></td>
+      <td><%= display_stock(item.product.stock, item.quantity) %></td>
+    </tr>
+  <% end %>
+<p>has been submitted!</p>

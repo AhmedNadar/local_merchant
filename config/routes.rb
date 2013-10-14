@@ -1,8 +1,6 @@
 Merchant::Application.routes.draw do
   
   resources :addresses
-
-  get "sessions/new"
   resources :products
   resources :order_items
   resources :orders do
@@ -10,21 +8,22 @@ Merchant::Application.routes.draw do
       get :confirm
     end
   end
-
   
+  get "sessions/new"
   root 'store#index', :as => "store"
 
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login" => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
+  get "logout" => "sessions#destroy", :as => "logout", via: :get
+  get "login" => "sessions#new", :as => "login", via: :get
+  get "signup" => "users#new", :as => "signup", via: :get
+
   resources :users
   resources :sessions
-  # root :to => "home#index"
-
+  
   # for categories
   get 'browse/shoes' => 'products#shoes'
   get 'browse/foods' => 'products#foods'
   get 'browse/clothes' => 'products#clothes'
+  get 'browse/cities' => 'products#cities'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

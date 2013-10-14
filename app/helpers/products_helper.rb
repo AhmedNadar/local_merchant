@@ -9,10 +9,10 @@ module ProductsHelper
 	def display_stock(stock, requested = 1)
 		if stock == 0
 			content_tag :span, "Out of Stock"
-		elsif requested < stock
-			"there is enough stock to fulfll the order "
+		elsif stock >= requested
+			content_tag :span, "In stock (#{stock}) "
 		else
-		 content_tag(:span, "Insufficient stock (#{stock})", class: "low_stock")
+			content_tag :span, "Insufficient stock (#{stock})"
 		end
 	end
 end
