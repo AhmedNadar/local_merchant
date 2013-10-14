@@ -42,7 +42,8 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    
+    @user = current_user
+    UserMailer.order_confirmation(@user, @order).deliver
   end
 
   private
