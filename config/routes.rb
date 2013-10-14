@@ -1,9 +1,16 @@
 Merchant::Application.routes.draw do
   
+  resources :addresses
+
   get "sessions/new"
   resources :products
   resources :order_items
-  resources :orders
+  resources :orders do
+    member do
+      get :confirm
+    end
+  end
+
   
   root 'store#index', :as => "store"
 
