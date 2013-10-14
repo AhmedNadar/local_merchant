@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.registration_confirmation(@user).deliver
       auto_login(@user)
       redirect_to store_url, notice: "Signed Up!"
     else

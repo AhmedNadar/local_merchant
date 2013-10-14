@@ -14,6 +14,7 @@ gem 'binding_of_caller'
 gem 'carrierwave'
 gem "rmagick"
 gem "sorcery", "~> 0.8.2"
+gem 'letter_opener'
 
 group :test, :development do
   gem 'pry'

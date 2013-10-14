@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :username
 
   has_many :products
+  
+  def name
+    return "#{first_name} #{last_name}"
+  end
 end
