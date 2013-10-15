@@ -17,8 +17,8 @@ Merchant::Application.routes.draw do
   get "login" => "sessions#new", as: "login", via: :get
   get "signup" => "users#new", as: "signup", via: :get
 
-  get "static_pages/about" => "static_pages#about", as: "about"
-  get "static_pages/contact" => "static_pages#contact", as: "contact"
+  get "about" => "static_pages#about", as: "about"
+  get "contact" => "static_pages#contact", as: "contact"
 
   get 'browse/shoes' => 'products#shoes'
   get 'browse/foods' => 'products#foods'

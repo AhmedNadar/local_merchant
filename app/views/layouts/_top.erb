@@ -1,0 +1,20 @@
+<!-- top -->
+    <div class="top">
+      <% if current_user %>
+      <div class="container">     
+          <ul class="loginbar pull-right">
+            Logged in as <%= current_user.email %>
+            <li><%= link_to "Signout", logout_path, class: "login-btn" %></li> 
+          <% else %>
+            <!-- <li><a href="page_faq.html" class="login-btn">Signup</a></li>  -->
+            <li><%= link_to "Signup", signup_path, class: "login-btn" %></li> 
+            <li class="devider">&nbsp;</li>
+            <!-- <li><a href="page_login.html" class="login-btn">Signin</a></li> -->
+            <li><%= link_to "Signin", login_path, class: "login-btn" %></li>  
+          </ul>
+      </div>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      <% end %>    
+    </div>
