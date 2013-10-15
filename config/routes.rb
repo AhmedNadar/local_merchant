@@ -1,5 +1,8 @@
 Merchant::Application.routes.draw do
   
+  resources :static_pages
+  resources :users
+  resources :sessions
   resources :addresses
   resources :products
   resources :order_items
@@ -8,18 +11,15 @@ Merchant::Application.routes.draw do
       get :confirm
     end
   end
-  
-  get "sessions/new"
   root 'store#index', :as => "store"
-
-  get "logout" => "sessions#destroy", :as => "logout", via: :get
-  get "login" => "sessions#new", :as => "login", via: :get
-  get "signup" => "users#new", :as => "signup", via: :get
-
-  resources :users
-  resources :sessions
   
-  # for categories
+  get "logout" => "sessions#destroy", as: "logout", via: :get
+  get "login" => "sessions#new", as: "login", via: :get
+  get "signup" => "users#new", as: "signup", via: :get
+
+  get "static_pages/about" => "static_pages#about", as: "about"
+  get "static_pages/contact" => "static_pages#contact", as: "contact"
+
   get 'browse/shoes' => 'products#shoes'
   get 'browse/foods' => 'products#foods'
   get 'browse/clothes' => 'products#clothes'

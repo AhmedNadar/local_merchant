@@ -18,27 +18,35 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    if @order.save
-      format.html { redirect_to @order, notice: 'Successfully added product to cart.' }
-    else
-      render :new
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to @order, notice: 'Successfully added product to cart.' }
+        format.json { render action: 'show', status: :created, location: @order }
+      else
+        format.html { render action: 'new'}
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def update
     respond_to do |format|
       if @order.update(order_params.merge(status: "Order is submitted"))
-        session[:order_id] = nil
-        format.html { redirect_to confirm_order_path(@order) }
+        format.html { redirect_to confirm_order_path(@order), notice: "Horray, your order was updated." }
+        format.json { head :no_content }
       else
-        render :edit
+        format.head { render action: 'edit' }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
     @order.destroy
-    redirect_to store_path, notice: 'Your cart is empty, you can continue shopping!.'
+    respond_to do |format|
+      format.html { redirect_to products_path }
+      format.json { head :no_content }
+    end
   end
 
   def confirm
@@ -52,7 +60,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:buyer_id, :status, :address_id)
+    params.require(:order).permit(:user_id, :status, :address_id)
   end
 
 end
