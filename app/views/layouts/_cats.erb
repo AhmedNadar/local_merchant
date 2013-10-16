@@ -1,8 +1,12 @@
-<div>
-  <ul>
-    <li><%= link_to "Home", store_path %></li>
-    <li><%= link_to "Shoes", browse_shoes_path %></li>
-    <li><%= link_to "foods", browse_foods_path %></li>
-    <li><%= link_to "clothes", browse_clothes_path %></li>
-  </ul>
+
+<div class="breadcrumbs">
+  <div class="container">
+        <h3 class="pull-left">Category</h3>
+        <ul class="pull-left breadcrumb">
+          <li><%= link_to "Home", browse_clothes_path %></li> -
+          <li><%= link_to "Shoes", browse_clothes_path %></li> -
+          <li><%= link_to "Foods", browse_clothes_path %></li> -
+          <li><%= link_to "Clothes", browse_clothes_path %></li>
+        </ul>
+    </div><!--/container-->
 </div>

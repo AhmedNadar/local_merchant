@@ -20,7 +20,6 @@ class OrderItemsController < ApplicationController
   def create
     @order_item = @order.order_items.find_or_initialize_by_product_id(params[:product_id])
     @order_item.quantity +=1
-
     respond_to do |format|
       if @order_item.save
         format.html { redirect_to @order, notice: 'Successfully added product to cart.' }

@@ -10,7 +10,7 @@
           <div class="overflow-hidden">
             <%= image_tag product.image_url(:thumb).to_s %>
           </div>
-          <%= link_to "Add to Cart", order_items_path(product_id: product.id), class: "btn-more hover-effect" %>         
+          <%= link_to "Add to Cart", order_items_path(product_id: product.id), class: "btn-more hover-effect", method: :post %>         
         </div>
         <h3><a class="hover-effect" ><%= link_to product.title, product_path(product) %></a></h3>
         <p><%= product.description %></p>

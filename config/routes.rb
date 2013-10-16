@@ -4,7 +4,7 @@ Merchant::Application.routes.draw do
   resources :users
   resources :sessions
   resources :addresses
-  resources :products
+  resources :products, except: [:destroy] 
   resources :order_items
   resources :orders do
     member do

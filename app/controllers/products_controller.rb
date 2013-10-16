@@ -45,11 +45,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-  	@product.destroy
-	  respond_to do |format|
-	 		format.html { redirect_to products_path}
-    	format.json { head :no_content }
-		end
   end
 
   def shoes
