@@ -10,6 +10,32 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require bootstrap
+//= require jquery-1.8.2.min
+//= require modernizr.custom
+//= require respond
+//= require app
+//= require apple-style
+//= require back-to-top
+//= require bootstrap
+//= require bootstrap.min
+//= require gmap
+//= require index
+//= require contact
+//= require horizontal-parallax
+//= require index
+//= require jquery.backstretch.min
+//= require jquery.bxslider
+//= require jquery.countdown
+//= require jquery.cslider
+//= require jquery.fancybox.pack
+//= require jquery.flexslider-min
+//= require jquery.quicksand
+//= require jquery.themepunch.plugins.min
+//= require jquery.themepunch.revolution.min
+//= require modernizr
+//= require sequence.jquery-min
+//= require sorting
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks

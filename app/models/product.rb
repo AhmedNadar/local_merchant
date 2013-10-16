@@ -14,6 +14,8 @@ class Product < ActiveRecord::Base
   belongs_to :category
   mount_uploader :image, ImageUploader
   default_scope :order => 'title'
+ 
+  CATEGORIES = ["food", "shoes", "clothes"]
 
   def price=(input)
 		input.delete!("$")

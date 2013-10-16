@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--[if IE 7]> <html lang="en" class="ie7"> <![endif]-->  
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]--> 
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "Local Makers" %></title>
   <%= csrf_meta_tags %>
@@ -7,37 +11,16 @@
 <body style="zoom: 1;">
   <%= render 'layouts/top' %>
   <%= render 'layouts/header' %>
-
-  <!-- <div id="container">
-    <div>
-      <% if current_user %>
-        Logged in as <%= link_to current_user.name, user_path(current_user) %>.
-        <%= link_to "Log out", logout_path %>
-      <% else %>
-        <%= link_to "Sign up", signup_path %> or
-        <%= link_to "Log in", login_path  %>.
-      <% end %>
-    </div>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
-  </div> -->
-
-<div>
-	<ul>
-		<li><%= link_to "Home", store_path %></li>
-		<li><%= link_to "Shoes", browse_shoes_path %></li>
-		<li><%= link_to "foods", browse_foods_path %></li>
-		<li><%= link_to "clothes", browse_clothes_path %></li>
-	</ul>
-</div>
-
-<%= yield %>
-<%= render 'layouts/footer' %>
-    <!-- Javascripts -->
-    <!-- Placed at the end of the document so the pages load faster -->
-<%= javascript_include_tag "application" %>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-
+  <%= render 'layouts/cats' %>
+  <%= render 'layouts/slider' %>
+  <%= render 'layouts/intro' %>
+  <!--=== Content Part ===-->
+  <div class="container"> 
+    <%= yield %> 
+  </div><!--/container-->   
+  <!-- End Content Part --> 
+  <%= render 'layouts/footer' %>
+  <%= render 'layouts/copyright' %>
+  <%= render 'layouts/js' %>
 </body>
-</html>
+</html> 
