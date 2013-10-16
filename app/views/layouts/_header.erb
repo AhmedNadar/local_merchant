@@ -17,7 +17,7 @@
             <div class="nav-collapse collapse">                                     
               <ul class="nav top-2">
                 <li class="active">
-                  <%= link_to "", store_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %> Home
+                  <%= link_to store_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %> Home
                     <b class="caret"></b>
                   <% end %>
                   <ul class="dropdown-menu">
@@ -27,7 +27,7 @@
                 </li>
 
                 <li>
-                  <%= link_to "", about_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Pages
+                  <%= link_to about_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Pages
                     <b class="caret"></b>
                   <% end %>  
                   <ul class="dropdown-menu">
@@ -37,7 +37,7 @@
                 </li>
 
                 <li>
-                  <%= link_to "", products_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Products
+                  <%= link_to products_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Products
                     <b class="caret"></b>
                   <% end %>                      
                   <ul class="dropdown-menu">
@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                  <%= link_to "", store_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Blog
+                  <%= link_to store_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Blog
                     <b class="caret"></b>
                   <% end %>
                   <ul class="dropdown-menu">
@@ -57,7 +57,7 @@
                 </li>
 
                 <li>
-                  <%= link_to "", contact_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Contact
+                  <%= link_to contact_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Contact
                     <b class="caret"></b>
                   <% end %>
                   <ul class="dropdown-menu">
@@ -72,10 +72,17 @@
               </ul>
               <div class="search-open">
                 <div class="input-append">
-                  <form>
-                    <%= text_field class: 'span3', placeholder: 'Search' %>
-                    <%= button_to "GO" class: 'btn-u', :method => "post" %>
-                  </form>
+
+                  <% form_tag products_path, :method => 'get' do %>
+                    <p>
+                      <%= text_field_tag :search, params[:search], class: 'span3', placeholder: 'Search' %>
+                      <%= submit_tag "Go", :name => nil, class: 'btn-u' %>
+                    </p>
+                  <% end %>
+
+
+
+
                 </div>
               </div>
             </div><!-- /nav-collapse -->                                
