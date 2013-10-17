@@ -13,11 +13,13 @@ gem 'carrierwave'
 gem "rmagick"
 gem "sorcery", "~> 0.8.2"
 gem 'letter_opener'
-# gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'sass-rails', '~> 4.0.0'  
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'font-awesome-rails'
+gem 'zurb-foundation'
+
 
 group :test, :development do
   gem 'pry'
