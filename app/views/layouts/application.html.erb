@@ -12,12 +12,11 @@
 <body style="zoom: 1;">
   <%= render 'layouts/top' %>
   <%= render 'layouts/header' %>
-  <%= render 'layouts/cats' %>
-  <%= render 'layouts/slider' %>
-  <%= render 'layouts/intro' %>
+  <%#= render 'layouts/slider' %>
+  <%= render 'layouts/intro' %>  
   <!--=== Content Part ===-->
   <div class="container"> 
-    <%= yield %> 
+      <%= yield %> 
   </div><!--/container-->   
   <!-- End Content Part --> 
   <%= render 'layouts/footer' %>

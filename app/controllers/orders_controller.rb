@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   
+  #before_action :require_login, only: [:show]
   before_action :set_order, only: [:show, :edit, :update, :destroy, :confirm]
   
   def index
@@ -35,7 +36,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to confirm_order_path(@order), notice: "Horray, your order was updated." }
         format.json { head :no_content }
       else
-        format.head { render action: 'edit' }
+        format.html { render action: 'show' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end

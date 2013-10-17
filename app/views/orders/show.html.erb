@@ -44,17 +44,22 @@
         </tr>
 
       <% end %>
-
+        
         <tr>
+          <% if current_user != nil %>
           <th>Shipping To:</th>
           <td>
             <%= f.select :address_id, current_user.addresses.collect{|a| [a.to_s, a.id]} %>
+            <%= f.hidden_field :address_id %>
             Or, <%= link_to "Add new address", new_address_path %>
           </td>
         </tr>
-        <tr>
+        <tr>  
           <th>Submit Order:</th>
-          <td><%= f.submit "Submit Order" %></td>
+            <td><%= f.submit "Submit Order" %></td>
+          <% else %>
+            <p>Please sign in to submit!</p>
+          <% end %>
         </tr>
     </table>
   <% end %>

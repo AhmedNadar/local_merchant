@@ -2,7 +2,7 @@
     <div class="container"> 
         <!-- Logo -->       
         <div class="logo">                                             
-          <%= link_to image_tag("/assets/logo1-default.png", id: "logo-header"), store_path %> 
+          <strong><h2><%= link_to "Local Makers", store_path %> </h2></strong>
         </div>
         <!-- /logo -->        
 
@@ -16,26 +16,10 @@
             </a><!-- /nav-collapse -->                                  
             <div class="nav-collapse collapse">                                     
               <ul class="nav top-2">
-                <li class="active">
-                  <%= link_to store_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %> Home
-                  <% end %>                      
-                </li>
-
-                <li>
-                  <%= link_to about_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>About
-                  <% end %>                        
-                </li>
-
-                <li>
-                  <%= link_to products_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Products
-                  <% end %>                                                              
-                </li>
-
-                <li>
-                  <%= link_to contact_path, class: "dropdown-toggle", data: {toggle: "dropdown"} do %>Contact
-                  <% end %>                     
-                </li>
-
+                <li><%= link_to "Home", store_path,         class: "dropdown-toggle" %></li>
+                <li><%= link_to "About",  about_path,       class: "dropdown-toggle" %></li>
+                <li><%= link_to "Products", products_path,  class: "dropdown-toggle" %></li>
+                <li><%= link_to "Contact", contact_path,    class: "dropdown-toggle" %></li>
                 <li>
                   <a class="search"><i class="icon-search search-btn"></i></a>
                 </li>                               

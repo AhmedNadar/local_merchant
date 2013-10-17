@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
 
   before_destroy :ensure_not_accossiated_to_any_order_item   
   has_many :order_items
-  belongs_to :users
+  belongs_to :user
   belongs_to :category
   mount_uploader :image, ImageUploader
   default_scope :order => 'title'

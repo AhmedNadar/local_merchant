@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require bootstrap
+//= require jquery.fancybox.pack
 //= require jquery-1.8.2.min
 //= require modernizr.custom
 //= require respond
@@ -28,7 +29,7 @@
 //= require jquery.bxslider
 //= require jquery.countdown
 //= require jquery.cslider
-//= require jquery.fancybox.pack
+
 //= require jquery.flexslider-min
 //= require jquery.quicksand
 //= require jquery.themepunch.plugins.min
