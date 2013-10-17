@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   has_many :order_items, dependent: :destroy
   belongs_to :address
   belongs_to :user
-  validates_presence_of :order_items
+  # validates_presence_of :order_items
   validate :has_items, on: :update
 
 

@@ -15,24 +15,7 @@
                 <span class="icon-bar"></span>
             </a><!-- /nav-collapse -->                                  
             <div class="nav-collapse collapse">                                     
-              <ul class="nav top-2">
-                <li><%= link_to "Home", store_path,         class: "dropdown-toggle" %></li>
-                <li><%= link_to "About",  about_path,       class: "dropdown-toggle" %></li>
-                <li><%= link_to "Products", products_path,  class: "dropdown-toggle" %></li>
-                <li><%= link_to "Contact", contact_path,    class: "dropdown-toggle" %></li>
-                <li>
-                  <a class="search"><i class="icon-search search-btn"></i></a>
-                </li>                               
-              </ul>
-              <div class="search-open">
-                <div class="input-append">
 
-                  <% form_tag products_path, :method => 'get' do %>
-                    <p>
-                      <%= text_field_tag :search, params[:search], class: 'span3', placeholder: 'Search' %>
-                      <%= submit_tag "Go", :name => nil, class: 'btn-u' %>
-                    </p>
-                  <% end %>
                 </div>
               </div>
             </div><!-- /nav-collapse -->                                

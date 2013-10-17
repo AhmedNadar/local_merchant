@@ -11,8 +11,6 @@
       <li class="divider"></li>
       <li><%= link_to "About", about_path %></li>
       <li class="divider"></li>
-      <li><%= link_to "Contact Us", contact_path %></li>
-      <li class="divider"></li>
       <li><%= link_to "Cart", products_path %></li>
       
       <% if current_user %>
@@ -23,11 +21,26 @@
         <li class="devider">&nbsp;</li>
         <li><%= link_to "Signin", login_path, class: "" %></li>
       <% end %>
+    </ul>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>   
-    </ul>
+      <% end %> 
   </div>
 </nav>
 
-
+<div class="row">
+<div class="large-12 columns">
+  <% form_tag products_path, :method => 'get' do %>
+  <div class="row collapse">
+    <div class="small-10 columns">
+      <input type="text" placeholder="Hex Value">
+      <%= text_field_tag :search, params[:search], class: 'span3', placeholder: 'Search' %>
+    </div>
+    <div class="small-2 columns">
+      <a href="#" class="button prefix">Search</a>
+      <%= submit_tag "Go", :name => nil, class: 'btn-u' %>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>

@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:email], params[:password], params[:remember_me])
     if user
-      redirect_to notice: "Logged in!"
+      redirect_to store_path, notice: "Logged in!"
     else
       flash.now.alert = "Email or password was invalid."
       redirect_to login_path

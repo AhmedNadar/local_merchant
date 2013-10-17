@@ -1,35 +1,27 @@
-<h1>All Products</h1>
+<div class="row">
+    <div class="tewlve columns">
+      <h2 class="light-weight">Local Makers Products</h2>
+    </div>
+  </div>
 
-<table>
-	<thead>
-		<tr>
-			<th></th>
-			<th>Title</th>
-			<th>Description</th>
-			<th>Price</th>
-			<th>Stock</th>
-			<th>Actions</th>
-			<tbody>
-				<% @products.each do |product| %>
-				<tr>
-					<td><%= image_tag product.image_url(:thumb).to_s %></td>
-					<td><%= product.title %></td>
-					<td><%= truncate(strip_tags(product.description), :length => 80 )%></td>
-					<td><strong><%= print_price(product.price) %></strong></td>
-					<td><strong><%= display_stock(product.stock) %></strong></td>
-					<td>
-						<%= link_to "Show", product_path(product) %><br>
-						<% if current_user && (current_user.id == product.user_id) %>
-							<%= link_to 'Edit', edit_product_path(product) %><br> 
+<div class="row">
+    <div class="tewlve columns">
+      <ul class="product block-grid products four-up">
+      	<% @products.each do |product| %>
+        <li>
+            <span class="top local_maker"><%= image_tag product.image_url(:thumb).to_s %></span>
+            <h3 class="local_maker"><%= product.title %></h3>
+            <p><%= truncate(strip_tags(product.description), :length => 250 )%></p>
+            <h6 class="about"><%= print_price(product.price) %></h6>
+            <%= link_to "Show", product_path(product), class: "secondary small button radius" %>
+            <% if current_user && (current_user.id == product.user_id) %>
+							<%= link_to 'Edit', edit_product_path(product), class: "secondary small button radius" %><br> 
 						<% end %>
-					</td>
-				</tr>
-			</tbody>
-		</tr>
-		<% end %>
-	</thead>
-</table>
-
-<p> <%= link_to "Create a New Product", new_product_path %> </p>
-<p> <%= link_to "Visit the Store", store_path %> </p>
-
+          </a>
+        </li>
+      <% end %>
+    </ul>
+      
+    </div>
+    <p> <%= link_to "Create a New Product", new_product_path, class: "button success button-wrap" %> </p>
+  </div>

@@ -1,11 +1,8 @@
 
-
-  <div class="container">
-        <h3>Category</h3>
-        <ul class="">
-          <li><%= link_to "Home", browse_clothes_path %></li> 
-          <li><%= link_to "Shoes", browse_clothes_path %></li>
-          <li><%= link_to "Foods", browse_clothes_path %></li>
-          <li><%= link_to "Clothes", browse_clothes_path %></li>
-        </ul>
-    </div><!--/container-->
+<ul class="side-nav">
+  <h4>Category</h4>
+  <li class="divider"></li>
+  <li><%= link_to "Shoes", browse_shoes_path %></li>
+  <li><%= link_to "Foods", browse_foods_path %></li>
+  <li><%= link_to "Clothes", browse_clothes_path %></li>
+</ul>

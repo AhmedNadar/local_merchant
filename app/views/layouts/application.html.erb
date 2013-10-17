@@ -14,7 +14,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Thoe Who Make" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -23,18 +23,13 @@
   </head>
   <body>
     <%= render 'layouts/top' %>
-    <div class="row">
-      
-      <div class="large-3 columns">
-        <%= render 'layouts/cats' %> 
-      </div>
-
-      <div class="large-9 columns">
+    <div class="row">      
+      <div class="large-10 columns">
         <%= yield %>
       </div>
-      <%= render 'layouts/header' %>
-      <%= render 'layouts/footer' %>
-      <%= render 'layouts/copyright' %>
+      <div class="large-2 columns">
+        <%= render 'layouts/cats' %> 
+      </div>      
       <%= render 'layouts/js' %>
       <%= javascript_include_tag "application" %>        
     </div>
