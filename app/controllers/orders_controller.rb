@@ -32,7 +32,9 @@ class OrdersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @order.update(order_params.merge(status: "Order is submitted"))
+      if @order.update(order_params)
+        @order.status = "Order is submitted"
+        @order.save
         format.html { redirect_to confirm_order_path(@order), notice: "Horray, your order was updated." }
         format.json { head :no_content }
       else
@@ -43,7 +45,8 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.destroy
+    @order.order_items=[]
+    @order.save
     respond_to do |format|
       format.html { redirect_to products_path }
       format.json { head :no_content }
