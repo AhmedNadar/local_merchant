@@ -21,19 +21,23 @@
     <%= csrf_meta_tags %>
     <%= render 'layouts/styles' %>
   </head>
-
   <body>
     <%= render 'layouts/top' %>
-    <%= render 'layouts/header' %>
-    <%= render 'layouts/cats' %> 
-    <!--=== Content Part ===-->
-    <div class="container"> 
-        <%= yield %> 
-    </div><!--/container-->   
-    <!-- End Content Part --> 
-    <%= render 'layouts/footer' %>
-    <%= render 'layouts/copyright' %>
-    <%= render 'layouts/js' %>
-    <%= javascript_include_tag "application" %>
+    <div class="row">
+      
+      <div class="large-3 columns">
+        <%= render 'layouts/cats' %> 
+      </div>
+
+      <div class="large-9 columns">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/footer' %>
+      <%= render 'layouts/copyright' %>
+      <%= render 'layouts/js' %>
+      <%= javascript_include_tag "application" %>        
+    </div>
+
   </body>
 </html>

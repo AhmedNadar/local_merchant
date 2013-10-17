@@ -1,18 +1,33 @@
-<!-- top -->
-  <div class="top">
-    <div class="container">     
-      <ul class="loginbar pull-right">
-        <% if current_user %>
-          Logged in as <%= current_user.email %>
-          <li><%= link_to "Signout", logout_path, class: "login-btn" %></li> 
-        <% else %>
-          <li><%= link_to "Signup", signup_path, class: "login-btn" %></li> 
-          <li class="devider">&nbsp;</li>
-          <li><%= link_to "Signin", login_path, class: "login-btn" %></li>
-        <% end %>
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        <% end %>   
-      </ul>
-    </div>    
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Those Who Makes", store_path %></a></h1>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li><%= link_to "Browse Products", products_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "About", about_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Contact Us", contact_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Cart", products_path %></li>
+      
+      <% if current_user %>
+        Logged in as <%= current_user.email %>
+        <li><%= link_to "Signout", logout_path, class: "" %></li> 
+      <% else %>
+        <li><%= link_to "Signup", signup_path, class: "" %></li> 
+        <li class="devider">&nbsp;</li>
+        <li><%= link_to "Signin", login_path, class: "" %></li>
+      <% end %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>   
+    </ul>
   </div>
+</nav>
+
+
