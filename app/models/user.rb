@@ -8,8 +8,13 @@ class User < ActiveRecord::Base
 
   has_many :products
   has_many :addresses
+  has_many :orders
   
   def name
     return "#{first_name} #{last_name}"
+  end
+
+  def current_cart
+    self.orders.where(status: nil).first_or_create
   end
 end

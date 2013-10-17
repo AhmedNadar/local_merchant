@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   
   #before_action :require_login, only: [:show]
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :confirm]
+  before_action :set_order, only: [:edit, :update, :destroy, :confirm]
   
   def index
     @orders = Order.all
@@ -12,13 +12,16 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = current_user.current_cart
   end
 
   def edit
   end
 
   def create
-    @order = Order.new(order_params)
+    @user = current_user
+    @order = @user.orders.build(order_params)
+    # @order = Order.new(order_params)
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Successfully added product to cart.' }
@@ -45,8 +48,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.order_items=[]
-    @order.save
+    @order.destroy
     respond_to do |format|
       format.html { redirect_to products_path }
       format.json { head :no_content }

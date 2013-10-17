@@ -1,3 +1,4 @@
+
 <nav class="top-bar">
   <ul class="title-area">
     <li class="name">
@@ -16,6 +17,7 @@
       <% if current_user %>
         Logged in as <%= current_user.email %>
         <li><%= link_to "Signout", logout_path, class: "" %></li> 
+        <li><%=  link_to "My profile", current_user %></li>
       <% else %>
         <li><%= link_to "Signup", signup_path, class: "" %></li> 
         <li class="devider">&nbsp;</li>
@@ -28,19 +30,23 @@
   </div>
 </nav>
 
+
+
+
 <div class="row">
-<div class="large-12 columns">
-  <% form_tag products_path, :method => 'get' do %>
-  <div class="row collapse">
-    <div class="small-10 columns">
-      <input type="text" placeholder="Hex Value">
+  <div class="large-12 columns">
+<% form_tag products_path, :method => 'get' do %>
+<ul class="right">
+  <li class="search">
+    <form>
       <%= text_field_tag :search, params[:search], class: 'span3', placeholder: 'Search' %>
-    </div>
-    <div class="small-2 columns">
-      <a href="#" class="button prefix">Search</a>
-      <%= submit_tag "Go", :name => nil, class: 'btn-u' %>
-    </div>
-  </div>
-  <% end %>
+    </form>
+  </li>
+
+  <li class="has-button">
+    <%= submit_tag "Go", class: 'small button' %>
+  </li>
+</ul>
+<% end %>
 </div>
 </div>

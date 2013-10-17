@@ -9,7 +9,11 @@
       </tr>
       <tr>
         <th>Status:</th>
+        <% if @order.status == nil %>
+        <td>Not submitted</td>
+        <% else %>
         <td><%= @order.status %></td>
+        <% end %>
       </tr>
       <tr>
         <th>Items:</th>
