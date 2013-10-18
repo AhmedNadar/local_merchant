@@ -60,13 +60,25 @@
         </tr>
         <tr>  
           <th>Submit Order:</th>
-            <td><%= f.submit "Submit Order" %></td>
+            <td>
+              <form action="" method="PUT">
+                <script
+                  src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+                  data-key="pk_test_E2bnXMdsBwJq9msYABBBm4gh"
+                  data-amount=<%="#{@order.total * 100}"%>
+                  data-name="local merchant"
+                </script>
+              </form>
+            </td>
           <% else %>
             <p>Please sign in to submit!</p>
           <% end %>
         </tr>
     </table>
   <% end %>
+
+ 
+
 
   <p> <%= link_to "Empty Cart", @order, data: { confirm: 'Are you sure?' }, method: :delete %></p>
 

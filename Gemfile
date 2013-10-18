@@ -19,7 +19,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'zurb-foundation'
-
+gem "stripe"
 
 group :test, :development do
   gem 'pry'

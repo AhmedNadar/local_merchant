@@ -6,6 +6,8 @@ class Order < ActiveRecord::Base
   # validates_presence_of :order_items
   validate :has_items, on: :update
 
+  
+
 
   def has_items
     unless self.order_items.count > 0

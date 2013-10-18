@@ -4,6 +4,7 @@ Merchant::Application.routes.draw do
   resources :users
   resources :sessions
   resources :addresses
+  resources :charges
   resources :products, except: [:destroy] 
   resources :order_items
   resources :orders do
@@ -12,6 +13,8 @@ Merchant::Application.routes.draw do
     end
   end
   root 'store#index', :as => "store"
+
+  get 'pay_now' => 'orders#pay_now'
   
   get "logout" => "sessions#destroy", as: "logout", via: :get
   get "login" => "sessions#new", as: "login", via: :get
