@@ -15,9 +15,8 @@
       <% end %>
       
       <% if current_user %>
-        Logged in as <%= current_user.email %>
+        <li><%= link_to "Welcome, #{current_user.first_name.capitalize}", current_user %></li>
         <li><%= link_to "Signout", logout_path, class: "" %></li> 
-        <li><%=  link_to "My profile", current_user %></li>
       <% else %>
         <li><%= link_to "Signup", signup_path, class: "" %></li> 
         <li class="devider">&nbsp;</li>
