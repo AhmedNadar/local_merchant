@@ -1,5 +1,21 @@
-<div>
-	<p>Name:<%= @user.name %></p>
-	<p>Email:<%= @user.email %></p>
-</div>
-<%= link_to "Edit my profile", edit_user_path(@user)%>
+<h2>My profile</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th width="220">First Name</th>
+      <th width="220">Last Name</th>
+      <th width="220">Email</th>
+      <th width="150">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.first_name.capitalize %></td>
+      <td><%= @user.last_name.capitalize %></td>
+      <td><%= @user.email %></td>
+      <td><%= link_to "Edit my profile", edit_user_path(@user), class: "small button" %></td>
+    </tr>
+
+  </tbody>
+</table>

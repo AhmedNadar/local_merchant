@@ -23,7 +23,7 @@
         <td><%= address.city %></td>
         <td><%= address.province %></td>
         <td><%= address.postalcode %></td>
-        <td><%= address.user_id %></td>
+        <td><%= address.user.name %></td>
         <td><%= link_to 'Show', address %></td>
         <td><%= link_to 'Edit', edit_address_path(address) %></td>
         <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
