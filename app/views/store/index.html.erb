@@ -1,10 +1,6 @@
 
-
-<% if notice %>
-  <p id="notice"><%= notice %></p> 
-<% end %>
 <% @products.each do |product| %>
-
+<p></p>
     <li>
       <div class="thumbnail-style thumbnail-kenburn">
         <div class="thumbnail-img">
@@ -15,9 +11,11 @@
         </div>
         <h3><a class="hover-effect" ><%= link_to product.title, product_path(product) %></a></h3>
         <p><%= product.description %></p>
-        <strong><%= print_price(product.price) %></strong>
+        <strong></strong>
+        <span class="panel"><%= print_price(product.price) %></span>
       </div>
     </li>
+    <hr>
 <% end %>
 
   </ul><!--/thumbnails-->

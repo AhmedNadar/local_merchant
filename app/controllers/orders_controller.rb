@@ -47,6 +47,7 @@ class OrdersController < ApplicationController
       if @order.update(order_params)
         @order.status = "Order is submitted"
         @order.save
+
         begin
           charge = Stripe::Charge.create(
           :amount => @amount.to_i, # amount in cents again
@@ -57,7 +58,8 @@ class OrdersController < ApplicationController
           redirect_to orders_path
         end
 
-        format.html { redirect_to confirm_order_path(@order), notice: "Horray, your order was updated." }
+
+        format.html { redirect_to confirm_order_path(@order), notice: "Horray, your order is successfully submitted." }
         format.json { head :no_content }
       else
         format.html { render action: 'show' }

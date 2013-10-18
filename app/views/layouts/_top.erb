@@ -10,9 +10,9 @@
       <li class="divider"></li>
       <li><%= link_to "Browse Products", products_path %></li>
       <li class="divider"></li>
-      <li><%= link_to "About", about_path %></li>
-      <li class="divider"></li>
-      <li><%= link_to "Cart", products_path %></li>
+      <% if current_user %>
+      <li><%= link_to "Cart", current_user.current_cart %></li>
+      <% end %>
       
       <% if current_user %>
         Logged in as <%= current_user.email %>
@@ -24,13 +24,8 @@
         <li><%= link_to "Signin", login_path, class: "" %></li>
       <% end %>
     </ul>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %> 
   </div>
 </nav>
-
-
 
 
 <div class="row">

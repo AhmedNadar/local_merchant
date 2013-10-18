@@ -1,15 +1,35 @@
-<h2>Thanks for shopping at Local Makers</h2>
+<h3>Thanks for shopping at Local Makers</h3>
 
-<p>Your order:</p>
-  <% @order.order_items.each do |item| %>
+<div data-alert="" class="alert-box secondary">
+  Your following order has been submitted!.
+</div>
+<table>
+  <thead>
     <tr>
-      <td><%= image_tag item.product.image_url(:thumb).to_s %></td>
+      <th width="200">Image</th>
+      <th width="200">Title</th>
+      <th width="80">Quantity</th>
+      <th width="90">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |item| %>
+    <tr>
+      <td><%= image_tag item.product.image_url(:small_thumb).to_s %></td>
       <td><%= item.product.title %></td>
-      <td><%= link_to item.quantity, edit_order_item_path(item) %></td>
-      <td><%= print_price item.product.price %></td>
-      <td><%= print_price item.subtotal %></td>
-      <td><%= display_stock(item.product.stock, item.quantity) %></td>
+      <td><%= item.quantity %></td>
+      <td></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><strong><%= print_price @order.total %></strong></td>
     </tr>
   <% end %>
 <p>has been submitted!</p>
+
+  </tbody>
+</table>
 

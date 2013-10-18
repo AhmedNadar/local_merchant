@@ -1,0 +1,8 @@
+<% flash.each do |name, msg| %>
+<div data-alert="" class="alert-box success">
+  
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  
+  <a href="" class="close">×</a>
+</div>
+<% end %> 

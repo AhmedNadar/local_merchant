@@ -4,11 +4,11 @@
   <%= form_for @order do |f| %>
    <table>
       <tr>
-        <th>Customer</th>
+        <th>Name</th>
         <td><%= @order.user.name if @order.user %></td>
       </tr>
       <tr>
-        <th>Status:</th>
+        <th>Order Status:</th>
         <% if @order.status == nil %>
         <td>Not submitted</td>
         <% else %>
@@ -19,18 +19,16 @@
         <th>Items:</th>
         <td><%= @order.order_items.count %></td>
       </tr>
-      <tr>
-        <th>Order Total:</th>
-        <td><%= print_price @order.total %></td>
-      </tr>
+
+
       <tr>
         <th>Items</th>
         <th>Title</th>
         <th>Quantity</th>
-        <th>Stock</th>
+        <th colspan="2">Stock</th>
         <th>Unit Price</th>
         <th>Subtotal</th>
-        <th>Order Total</th>
+        
         <th>Delete</th>
       </tr>
       <tr>
@@ -40,11 +38,10 @@
           <td><%= image_tag item.product.image_url(:thumb).to_s %></td>
           <td><%= item.product.title %></td>
           <td><%= link_to item.quantity, edit_order_item_path(item) %></td>
-          <td><%= display_stock item.product.stock, item.quantity %></td>
+          <td colspan="2"><%= display_stock item.product.stock, item.quantity %></td>
           <td><%= print_price item.product.price %></td>
           <td><%= print_price item.subtotal %></td>
-          <td><strong><%= print_price @order.total %></strong></td>
-          <td><%= link_to "Delete", item, data: {confirm: "Are you sure?"}, method: :delete  %></td>
+          <td><%= link_to "Delete", item, data: {confirm: "Are you sure?"}, method: :delete ,class: "button alert" %></td>
         </tr>
 
       <% end %>
@@ -52,11 +49,16 @@
         <tr>
           <% if current_user != nil %>
           <th>Shipping To:</th>
-          <td>
+          <th colspan="4">
             <%= f.select :address_id, current_user.addresses.collect{|a| [a.to_s, a.id]} %>
             <%= f.hidden_field :address_id %>
             Or, <%= link_to "Add new address", new_address_path %>
-          </td>
+          </th>
+
+          <th><%= print_price @order.total %></td>
+          <th colspan="2">is your Total</th>
+          
+
         </tr>
         <tr>  
           <th>Submit Order:</th>
@@ -77,9 +79,10 @@
     </table>
   <% end %>
 
- 
 
 
-  <p> <%= link_to "Empty Cart", @order, data: { confirm: 'Are you sure?' }, method: :delete %></p>
+  <ul class="inline-list">
+    <li class=""><%= link_to "Empty Cart", @order, data: { confirm: 'Are you sure?' }, method: :delete, class: "button" %></li>
+    <li class=""><%= link_to "Continue Shopping", store_path, class: "button success" %></dd></li>
+  </ul>
 
-  <p> <%= link_to "Continue Shopping", store_path %> </p>
