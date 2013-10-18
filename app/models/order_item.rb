@@ -6,6 +6,6 @@ class OrderItem < ActiveRecord::Base
   validates_presence_of :order_id, :product_id
 
   def subtotal
-    product.price.to_s.to_d * quantity.to_s.to_d
+    Product.find(self.product_id).price.to_s.to_d * quantity.to_s.to_d
   end
 end
