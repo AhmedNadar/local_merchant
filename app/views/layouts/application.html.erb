@@ -16,8 +16,10 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Thoe Who Make" %></title>
 
-  	<%= stylesheet_link_tag "application" %>
+  	<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= javascript_include_tag :modernizr %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/styles' %>
   </head>
