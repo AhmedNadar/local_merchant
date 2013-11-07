@@ -8,15 +8,14 @@
     <div class="tewlve columns">
       <ul class="product block-grid products four-up">
       	<% @products.each do |product| %>
+          
         <li>
             <span class="top local_maker"><%= image_tag product.image_url(:thumb).to_s %></span>
             <h3 class="local_maker"><%= link_to product.title, product_path(product) %></h3>
             <p><%= truncate(strip_tags(product.description), :length => 250 )%></p>
             <h6 class="about"><%= print_price(product.price) %></h6>
             <%= link_to "Show", product_path(product), class: "secondary small button radius" %>
-            <% if current_user && (current_user.id == product.user_id) %>
-							<%= link_to 'Edit', edit_product_path(product), class: "secondary small button radius" %><br> 
-						<% end %>
+				  	<%= link_to 'Edit', edit_product_path(product), class: "secondary small button radius" %><br> 
           <hr>
         </li>
       <% end %>

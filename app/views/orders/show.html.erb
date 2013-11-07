@@ -44,7 +44,7 @@
         <tr>
           <% if current_user != nil %>
           <th>Shipping To:</th>
-          <th colspan="4">
+          <th colspan="5">
             <%= link_to (f.select :address_id, current_user.addresses.collect{|a| [a.to_s, a.id]}), class: "button alert round split" %>
             <%= f.hidden_field :address_id %>
             Or, <%= link_to "Add new address", new_address_path %>
@@ -52,20 +52,18 @@
           <th><%= print_price @order.total %></td>
           <th colspan="2">is your Total</th>
         </tr>
-        <tr>  
-            <td colspan="8"><%= f.submit "Submit Order", class: "button success round" %></td>
-          <th>Submit Order:</th>
-            <td>
-              <form action="" method="PUT">
-                <script
-                  src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-                  data-key="pk_test_E2bnXMdsBwJq9msYABBBm4gh"
-                  data-amount=<%="#{@order.total * 100}"%>
-                  data-name="local merchant"
-                </script>
-              </form>
-            </td>
-          <% else %>
+        <tr> 
+          <th colspan="8">
+          <form action="" method="PUT">
+            <script
+              src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+              data-key="pk_test_E2bnXMdsBwJq9msYABBBm4gh"
+              data-amount=<%="#{@order.total * 100}"%>
+              data-name="local merchant"
+            </script>
+          </form>
+          </th>
+           <% else %>
             <p>Please sign in to submit!</p>
           <% end %>
         </tr>

@@ -4,9 +4,10 @@ class ProductsController < ApplicationController
   #before_filter :require_login, :only => @product
 
   def index
-  	@products = Product.all
-    @products = Product.search(params[:search])
-    
+
+  	# @products = Product.where(user_id: current_user.id)
+    @products = current_user.products
+    # @products = Product.search(params[:search])
   end
 
   def show
@@ -21,8 +22,10 @@ class ProductsController < ApplicationController
 
   def create
   	@product = Product.new(product_params)
+    @product.user = current_user
   	respond_to do |format|
 	  	if@product.save
+        params[:product][:user_id] = current_user.id
 	  		format.html { redirect_to @product, notice: 'Product weas successfully created.' }
 	  		format.json { render action: 'show', status: :created, location: @product }
 	  	else
@@ -52,7 +55,7 @@ class ProductsController < ApplicationController
   end
 
   def foods
-    @products = Product.where("category_name = ?", "foods")
+    @products = Product.where("category_name = ?", "food")
   end
 
   def clothes
