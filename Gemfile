@@ -28,13 +28,6 @@ group :test, :development do
   gem 'pry'
   gem 'database_cleaner'
   gem 'awesome_print'
-  # gem 'rspec-rails'
-  # gem 'factory_girl_rails'
-  # gem 'capybara'
-  # gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  # gem 'guard-rspec'
-  # gem 'spork'
-  # gem 'guard-spork'
 end
 
 
