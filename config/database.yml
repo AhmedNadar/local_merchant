@@ -1,29 +1,29 @@
 development:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   database: merchant_development
   host: localhost
   pool: 5
-  username: 
+  username: ahmed
   password:
   timeout: 5000
 
 test:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   database: merchant_test
   host: localhost
   pool: 5
-  username: 
+  username: ahmed
   password:
   timeout: 5000
 
 production:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   database: merchant_production
   host: localhost
   pool: 5
-  username: 
+  username: ahmed
   password:
   timeout: 5000
